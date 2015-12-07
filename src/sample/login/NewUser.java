@@ -41,7 +41,12 @@ public class NewUser extends javax.swing.JFrame {
         txtCUserP = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         btnLogin.setText("Create");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -159,10 +164,17 @@ public class NewUser extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-        MainWin.btnNUserWin.setEnabled(true);
+        //MainWin.btnNUserWin.setEnabled(true);
+        MainWin.setEnable(true);
         this.dispose();
         
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        //MainWin.btnNUserWin.setEnabled(true);
+        MainWin.setEnable(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

@@ -14,6 +14,11 @@ import javax.swing.*;
  */
 public class MainWin extends javax.swing.JFrame {
 
+    static void setEnable(boolean b) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       this.setEnable(b);
+    }
+
     /**
      * Creates new form MainWin
      */
@@ -40,6 +45,8 @@ public class MainWin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sample Login by iMughal.COM");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -124,7 +131,8 @@ public class MainWin extends javax.swing.JFrame {
         // TODO add your handling code here:
         NewUser newuser = new NewUser();
         newuser.setVisible(true);
-        btnNUserWin.setEnabled(false);
+        //btnNUserWin.setEnabled(false);
+        this.setEnabled(false);
     }//GEN-LAST:event_btnNUserWinActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
