@@ -98,7 +98,7 @@ public class NewUser extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtNUserP)
@@ -152,15 +152,15 @@ public class NewUser extends javax.swing.JFrame {
 
             try {
                 Class.forName("org.sqlite.JDBC");
-                Connection con = DriverManager.getConnection("jdbc:sqlite:sample");
-                String sql = "INSERT INTO `users`(`usern`,`upass`) VALUES (?,?)";
-                PreparedStatement st = con.prepareStatement(sql);
-                st.setString(1, txtNUserN.getText());
-                st.setString(2, txtNUserP.getText());
-
-                st.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Successfully User Created.");
-                con.close();
+                try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
+                    String sql = "INSERT INTO `users`(`usern`,`upass`) VALUES (?,?)";
+                    PreparedStatement st = con.prepareStatement(sql);
+                    st.setString(1, txtNUserN.getText());
+                    st.setString(2, txtNUserP.getText());
+                    
+                    st.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Successfully User Created.");
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }

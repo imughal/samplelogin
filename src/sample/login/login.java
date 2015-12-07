@@ -43,6 +43,11 @@ public class login extends javax.swing.JFrame {
         setTitle("LOGIN");
         setAlwaysOnTop(true);
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
+            }
+        });
 
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +175,10 @@ public class login extends javax.swing.JFrame {
     private void txtUserPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserPKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserPKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyReleased
 
     /**
      * @param args the command line arguments
