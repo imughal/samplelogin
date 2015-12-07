@@ -16,7 +16,7 @@ public class SampleLogin {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        login run = new login();
+        MainWin run = new MainWin();
         run.setVisible(true);
     }
     

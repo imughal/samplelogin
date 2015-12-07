@@ -152,8 +152,8 @@ public class login extends javax.swing.JFrame {
 
                 if (rs.next()) {
                    // JOptionPane.showMessageDialog(null, "Connected Successfully");
-                   NewUser newuser = new NewUser();
-                   newuser.setVisible(true);
+                   MainWin mainwin = new MainWin();
+                   mainwin.setVisible(true);
                    con.close();
                    this.dispose();
                 } else {
