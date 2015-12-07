@@ -43,6 +43,7 @@ public class MainWin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         labelUserName = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btnEUserWin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sample Login by iMughal.COM");
@@ -82,6 +83,13 @@ public class MainWin extends javax.swing.JFrame {
         labelUserName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         labelUserName.setText("user");
 
+        btnEUserWin.setText("Edit User");
+        btnEUserWin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEUserWinActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,11 +105,12 @@ public class MainWin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnVUserWin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDUserWin, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEUserWin, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDUserWin, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,7 +131,8 @@ public class MainWin extends javax.swing.JFrame {
                     .addComponent(btnNUserWin, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVUserWin, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDUserWin, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEUserWin, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -149,6 +159,7 @@ public class MainWin extends javax.swing.JFrame {
         btnClose.setEnabled(b);
         btnDUserWin.setEnabled(b);
         btnVUserWin.setEnabled(b);
+        btnEUserWin.setEnabled(b);
         
     }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -173,6 +184,13 @@ public class MainWin extends javax.swing.JFrame {
         view.setVisible(true);
         allBtnDE(false);
     }//GEN-LAST:event_btnVUserWinActionPerformed
+
+    private void btnEUserWinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEUserWinActionPerformed
+        // TODO add your handling code here:
+        Modify md = new Modify();
+        md.setVisible(true);
+        allBtnDE(false);
+    }//GEN-LAST:event_btnEUserWinActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +230,7 @@ public class MainWin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JButton btnClose;
     private static javax.swing.JButton btnDUserWin;
+    private static javax.swing.JButton btnEUserWin;
     private static javax.swing.JButton btnNUserWin;
     private static javax.swing.JButton btnVUserWin;
     private javax.swing.JLabel jLabel1;
