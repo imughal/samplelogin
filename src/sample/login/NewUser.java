@@ -166,7 +166,7 @@ public class NewUser extends javax.swing.JFrame {
                     st.setString(1, txtNUserN.getText());
                     st.setString(2, txtNUserP.getText());
                     st.setString(3, txtNfullName.getText());
-                    
+
                     st.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Successfully User Created.");
                 }
@@ -189,6 +189,7 @@ public class NewUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         //MainWin.btnNUserWin.setEnabled(true);
         //MainWin.setEnable(true);
+        MainWin.allBtnDE(true);
     }//GEN-LAST:event_formWindowClosing
 
     /**

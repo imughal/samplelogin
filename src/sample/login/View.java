@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package sample.login;
+
 import java.sql.*;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,35 +31,64 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        user = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbViewU = new javax.swing.JTable();
+        btnCloseView = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("View Users");
+        setAlwaysOnTop(true);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153))));
+        jLabel3.setFont(new java.awt.Font("Tholoth", 1, 48)); // NOI18N
+        jLabel3.setText("View USERs");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(296, Short.MAX_VALUE))
-        );
+        tbViewU.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jButton1.setText("Button");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            },
+            new String [] {
+                "ID", "Full Name", "User Name", "Password"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbViewU);
+        if (tbViewU.getColumnModel().getColumnCount() > 0) {
+            tbViewU.getColumnModel().getColumn(0).setPreferredWidth(2);
+            tbViewU.getColumnModel().getColumn(1).setResizable(false);
+            tbViewU.getColumnModel().getColumn(2).setResizable(false);
+            tbViewU.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        btnCloseView.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnCloseView.setText("CLOSE");
+        btnCloseView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCloseViewActionPerformed(evt);
             }
         });
 
@@ -65,45 +96,85 @@ public class View extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addGap(95, 95, 95))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(jButton1)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addGap(128, 128, 128)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCloseView, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(201, 201, 201))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCloseView, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try{
-        Class.forName("org.sqlite.JDBC");
-        Connection cn = DriverManager.getConnection("jdbc:sqlite:sample");
-        Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery("select usern from users where id = 1");
-        user.setText(rs.getString("usern"));
-        
-        
-        }
-        catch(Exception e)
-        {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
+                String sql = "SELECT * FROM users";
+                PreparedStatement st = con.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+                //DefaultTableModel dtm = new DefaultTableModel();
+                try {
+                    while (tbViewU.getRowCount() > 0) {
+                        ((DefaultTableModel) tbViewU.getModel()).removeRow(0);
+                    }
+                    int columns = rs.getMetaData().getColumnCount();
+                    while (rs.next()) {
+                        Object[] row = new Object[columns];
+                        for (int i = 1; i <= columns; i++) {
+                            row[i - 1] = rs.getObject(i);
+                        }
+                        ((DefaultTableModel) tbViewU.getModel()).insertRow(rs.getRow() - 1, row);
+                    }
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+
+                JOptionPane.showMessageDialog(null, "Successfully User Created.");
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-            
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_formWindowOpened
+
+    private void btnCloseViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseViewActionPerformed
+        // TODO add your handling code here:
+        MainWin.allBtnDE(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCloseViewActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        MainWin.allBtnDE(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -141,8 +212,10 @@ public class View extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel user;
+    private javax.swing.JButton btnCloseView;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable tbViewU;
     // End of variables declaration//GEN-END:variables
 }

@@ -61,6 +61,11 @@ public class MainWin extends javax.swing.JFrame {
         });
 
         btnVUserWin.setText("View User");
+        btnVUserWin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVUserWinActionPerformed(evt);
+            }
+        });
 
         btnDUserWin.setText("Delete User");
 
@@ -138,10 +143,7 @@ public class MainWin extends javax.swing.JFrame {
         allBtnDE(false);
     }//GEN-LAST:event_btnNUserWinActionPerformed
 
-    /**
-     *
-     * @param b
-     */
+
     public static void allBtnDE(boolean b){
         btnNUserWin.setEnabled(b);
         btnClose.setEnabled(b);
@@ -164,6 +166,13 @@ public class MainWin extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnVUserWinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVUserWinActionPerformed
+        // TODO add your handling code here:
+        View view = new View();
+        view.setVisible(true);
+        allBtnDE(false);
+    }//GEN-LAST:event_btnVUserWinActionPerformed
 
     /**
      * @param args the command line arguments
