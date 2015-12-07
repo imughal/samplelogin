@@ -159,7 +159,9 @@ public class NewUser extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
+        MainWin.btnNUserWin.setEnabled(true);
         this.dispose();
+        
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**

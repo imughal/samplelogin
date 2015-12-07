@@ -124,6 +124,7 @@ public class MainWin extends javax.swing.JFrame {
         // TODO add your handling code here:
         NewUser newuser = new NewUser();
         newuser.setVisible(true);
+        btnNUserWin.setEnabled(false);
     }//GEN-LAST:event_btnNUserWinActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -180,7 +181,7 @@ public class MainWin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDUserWin;
-    private javax.swing.JButton btnNUserWin;
+    public static javax.swing.JButton btnNUserWin;
     private javax.swing.JButton btnVUserWin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
