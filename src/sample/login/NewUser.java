@@ -65,21 +65,11 @@ public class NewUser extends javax.swing.JFrame {
         txtNUserN.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
 
         txtNUserP.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        txtNUserP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNUserPKeyPressed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Tholoth", 1, 48)); // NOI18N
         jLabel3.setText("New USER");
 
         txtCUserP.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        txtCUserP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtCUserPKeyPressed(evt);
-            }
-        });
 
         jLabel4.setText("Confirm Password:");
 
@@ -171,14 +161,6 @@ public class NewUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
-
-    private void txtNUserPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNUserPKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNUserPKeyPressed
-
-    private void txtCUserPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCUserPKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCUserPKeyPressed
 
     /**
      * @param args the command line arguments

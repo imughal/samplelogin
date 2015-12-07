@@ -94,7 +94,7 @@ public class View extends javax.swing.JFrame {
         Connection cn = DriverManager.getConnection("jdbc:sqlite:sample");
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery("select usern from users where id = 1");
-        user.setText(rs.toString());
+        user.setText(rs.getString("usern"));
         
         
         }
