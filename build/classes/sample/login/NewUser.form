@@ -34,6 +34,7 @@
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -43,8 +44,9 @@
                               <Component id="btnCancel" min="-2" pref="87" max="-2" attributes="0"/>
                           </Group>
                           <Component id="txtNUserP" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtNUserN" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
+                          <Component id="txtNfullName" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
                           <Component id="txtCUserP" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtNUserN" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
                   </Group>
@@ -66,10 +68,15 @@
               <Component id="jLabel3" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="txtNfullName" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="txtNUserN" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -86,7 +93,7 @@
                   <Component id="btnLogin" alignment="0" max="32767" attributes="0"/>
                   <Component id="btnCancel" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,10 +116,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="User Name:"/>
+        <Property name="text" type="java.lang.String" value="Full Name:"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
@@ -121,7 +131,7 @@
         <Property name="text" type="java.lang.String" value="Password:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNUserN">
+    <Component class="javax.swing.JTextField" name="txtNfullName">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="14" style="1"/>
@@ -153,6 +163,19 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirm Password:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNUserN">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="14" style="1"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="User Name:"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
   </SubComponents>
