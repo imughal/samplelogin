@@ -156,11 +156,29 @@ public class login extends javax.swing.JFrame {
                 ResultSet rs = st.executeQuery();
 
                 if (rs.next()) {
-                   // JOptionPane.showMessageDialog(null, "Connected Successfully");
-                   MainWin mainwin = new MainWin();
-                   mainwin.setVisible(true);
-                   con.close();
-                   this.dispose();
+                    // JOptionPane.showMessageDialog(null, "Connected Successfully");
+                    MainWin mainwin = new MainWin();
+                    mainwin.setVisible(true);
+                    try {
+                        /*String sqle = "select fullname from users where usern = ?";
+                        PreparedStatement ts = con.prepareStatement(sqle);
+                        ts.setString(1, txtUserN.getText());
+                        ResultSet sr = ts.executeQuery();
+                        mainwin.labelUserName.setText(sr.getString("fullname"));
+                        */
+                        /*
+                        Statement ds = con.createStatement();
+                        ResultSet sr = ds.executeQuery("select fullname from users where usern ='"+txtUserN.getText()+"'");
+                        mainwin.labelUserName.setText(sr.getString("fullname"));
+                        */
+                        mainwin.loggedUser = txtUserN.getText();
+                        
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e);
+
+                    }
+                    con.close();
+                    this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "User or Password Error");
                 }
