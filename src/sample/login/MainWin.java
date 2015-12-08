@@ -16,7 +16,7 @@ public class MainWin extends javax.swing.JFrame {
 
     static void setEnable(boolean b) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-       this.setEnable(b);
+       
     }
 
     /**
