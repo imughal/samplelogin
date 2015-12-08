@@ -211,30 +211,58 @@ public class DeleteUser extends javax.swing.JFrame {
 
     private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
         // TODO add your handling code here:
-        int dialogResult = JOptionPane.showConfirmDialog(null, "Are You Sure to Delete the User?", "Delete User", JOptionPane.YES_NO_OPTION);
+        String lUser = MainWin.loggedUser;
+        if (cUser(myID, lUser)) {
+            JOptionPane.showMessageDialog(null, "Cannot Delete Current Logged User...");
+        } else {
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Are You Sure to Delete the User?", "Delete User", JOptionPane.YES_NO_OPTION);
 
-        if (dialogResult == 0) {
-            try {
-                Class.forName("org.sqlite.JDBC");
-                try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
-                    String sql = "DELETE FROM `users` WHERE id=?;";
-                    PreparedStatement st = con.prepareStatement(sql);
-                    st.setString(1, myID);
-                    //st.setString(2, txtNUserN.getText());
-                    //st.setString(3, txtNUserP.getText());
-                    //st.setString(4, userID);
+            if (dialogResult == 0) {
+                try {
+                    Class.forName("org.sqlite.JDBC");
+                    try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
+                        String sql = "DELETE FROM `users` WHERE id=?;";
+                        PreparedStatement st = con.prepareStatement(sql);
+                        st.setString(1, myID);
+                        //st.setString(2, txtNUserN.getText());
+                        //st.setString(3, txtNUserP.getText());
+                        //st.setString(4, userID);
 
-                    st.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "User Deleted");
-                    con.close();
-                    //this.dispose();
-                    tableG();
+                        st.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "User Deleted");
+                        con.close();
+                        //this.dispose();
+                        tableG();
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
                 }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
             }
         }
     }//GEN-LAST:event_btnDeleteUserActionPerformed
+    public static boolean cUser(String cID, String cUN) {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
+                String sql = "SELECT usern FROM users WHERE id=?";
+                PreparedStatement st = con.prepareStatement(sql);
+                st.setString(1, cID);
+                ResultSet sr = st.executeQuery();
+                String cIDUser = sr.getString("usern");
+                con.close();
+                if (cIDUser.equals(cUN)) {
+                    //JOptionPane.showMessageDialog(null, "Deleting User: "+cIDUser+" - Deleting ID: " + cID +" - Current User: "+ cUN + " - Returning True");
+                    return true;
+                } else {
+                   // JOptionPane.showMessageDialog(null, "Deleting User: "+cIDUser+" - Deleting ID: " + cID +" - Current User: "+ cUN + " - Returning False");
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+    }
 
     /**
      * @param args the command line arguments

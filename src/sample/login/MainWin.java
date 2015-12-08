@@ -20,7 +20,7 @@ public class MainWin extends javax.swing.JFrame {
     public MainWin() {
         initComponents();
     }
-    public String loggedUser = "";
+    public static String loggedUser = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
