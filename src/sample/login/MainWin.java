@@ -69,6 +69,11 @@ public class MainWin extends javax.swing.JFrame {
         });
 
         btnDUserWin.setText("Delete User");
+        btnDUserWin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDUserWinActionPerformed(evt);
+            }
+        });
 
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -191,6 +196,13 @@ public class MainWin extends javax.swing.JFrame {
         md.setVisible(true);
         allBtnDE(false);
     }//GEN-LAST:event_btnEUserWinActionPerformed
+
+    private void btnDUserWinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDUserWinActionPerformed
+        // TODO add your handling code here:
+        DeleteUser deleteuser = new DeleteUser();
+        deleteuser.setVisible(true);
+        allBtnDE(false);
+    }//GEN-LAST:event_btnDUserWinActionPerformed
 
     /**
      * @param args the command line arguments
