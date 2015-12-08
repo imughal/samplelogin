@@ -11,14 +11,14 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kgaid
+ * @author imran
  */
-public class View extends javax.swing.JFrame {
+public class Modify extends javax.swing.JFrame {
 
     /**
      * Creates new form View
      */
-    public View() {
+    public Modify() {
         initComponents();
     }
 
@@ -38,7 +38,7 @@ public class View extends javax.swing.JFrame {
         btnCloseView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("View Users");
+        setTitle("Edit Users");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -50,7 +50,7 @@ public class View extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tholoth", 1, 48)); // NOI18N
-        jLabel3.setText("View USERs");
+        jLabel3.setText("Edit USERs");
 
         tbViewU.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,9 +134,7 @@ public class View extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+    public static void tableG() {
         try {
             Class.forName("org.sqlite.JDBC");
             try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
@@ -144,6 +142,7 @@ public class View extends javax.swing.JFrame {
                 PreparedStatement st = con.prepareStatement(sql);
                 ResultSet rs = st.executeQuery();
                 //DefaultTableModel dtm = new DefaultTableModel();
+                // Do not delete own user : do not delete last user
                 try {
                     while (tbViewU.getRowCount() > 0) {
                         ((DefaultTableModel) tbViewU.getModel()).removeRow(0);
@@ -165,6 +164,11 @@ public class View extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+
+    }
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        tableG();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCloseViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseViewActionPerformed
@@ -181,14 +185,18 @@ public class View extends javax.swing.JFrame {
 
     private void tbViewUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbViewUMouseClicked
         // TODO add your handling code here:
-//        try{
-//            int row = tbViewU.getSelectedRow();
-//            String myID = (tbViewU.getModel().getValueAt(row, 0).toString());
-//            JOptionPane.showMessageDialog(null, myID);
-//            
-//        }catch (Exception e){
-//            JOptionPane.showMessageDialog(null, e);
-//        }
+        if (evt.getClickCount() == 2) {
+            try {
+                int row = tbViewU.getSelectedRow();
+                String myID = (tbViewU.getModel().getValueAt(row, 0).toString());
+                modifyUser mu = new modifyUser();
+                mu.setVisible(true);
+                mu.userID = myID;
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
     }//GEN-LAST:event_tbViewUMouseClicked
 
     /**
@@ -208,20 +216,21 @@ public class View extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Modify.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Modify.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Modify.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Modify.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View().setVisible(true);
+                new Modify().setVisible(true);
             }
         });
     }
@@ -231,6 +240,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tbViewU;
+    private static javax.swing.JTable tbViewU;
     // End of variables declaration//GEN-END:variables
 }

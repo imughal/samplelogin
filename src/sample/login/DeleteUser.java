@@ -11,16 +11,17 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kgaid
+ * @author imran
  */
-public class View extends javax.swing.JFrame {
+public class DeleteUser extends javax.swing.JFrame {
 
     /**
      * Creates new form View
      */
-    public View() {
+    public DeleteUser() {
         initComponents();
     }
+    String myID = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,9 +37,10 @@ public class View extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbViewU = new javax.swing.JTable();
         btnCloseView = new javax.swing.JButton();
+        btnDeleteUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("View Users");
+        setTitle("Edit Users");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -50,7 +52,7 @@ public class View extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tholoth", 1, 48)); // NOI18N
-        jLabel3.setText("View USERs");
+        jLabel3.setText("Delete USERs");
 
         tbViewU.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,26 +98,37 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        btnDeleteUser.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        btnDeleteUser.setText("DELETE");
+        btnDeleteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteUserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(96, 96, 96)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(jSeparator1)
                 .addGap(95, 95, 95))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCloseView, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCloseView, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(201, 201, 201))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,16 +140,16 @@ public class View extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCloseView, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCloseView, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+    public static void tableG() {
         try {
             Class.forName("org.sqlite.JDBC");
             try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
@@ -165,6 +178,11 @@ public class View extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+
+    }
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        tableG();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCloseViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseViewActionPerformed
@@ -181,15 +199,42 @@ public class View extends javax.swing.JFrame {
 
     private void tbViewUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbViewUMouseClicked
         // TODO add your handling code here:
-//        try{
-//            int row = tbViewU.getSelectedRow();
-//            String myID = (tbViewU.getModel().getValueAt(row, 0).toString());
-//            JOptionPane.showMessageDialog(null, myID);
-//            
-//        }catch (Exception e){
-//            JOptionPane.showMessageDialog(null, e);
-//        }
+
+        try {
+            int row = tbViewU.getSelectedRow();
+            myID = (tbViewU.getModel().getValueAt(row, 0).toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
     }//GEN-LAST:event_tbViewUMouseClicked
+
+    private void btnDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteUserActionPerformed
+        // TODO add your handling code here:
+        int dialogResult = JOptionPane.showConfirmDialog(null, "Are You Sure to Delete the User?", "Delete User", JOptionPane.YES_NO_OPTION);
+
+        if (dialogResult == 0) {
+            try {
+                Class.forName("org.sqlite.JDBC");
+                try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
+                    String sql = "DELETE FROM `users` WHERE id=?;";
+                    PreparedStatement st = con.prepareStatement(sql);
+                    st.setString(1, myID);
+                    //st.setString(2, txtNUserN.getText());
+                    //st.setString(3, txtNUserP.getText());
+                    //st.setString(4, userID);
+
+                    st.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "User Deleted");
+                    con.close();
+                    //this.dispose();
+                    tableG();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_btnDeleteUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,29 +253,33 @@ public class View extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View().setVisible(true);
+                new DeleteUser().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCloseView;
+    private javax.swing.JButton btnDeleteUser;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tbViewU;
+    private static javax.swing.JTable tbViewU;
     // End of variables declaration//GEN-END:variables
 }

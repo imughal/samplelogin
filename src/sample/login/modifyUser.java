@@ -12,14 +12,15 @@ import javax.swing.*;
  *
  * @author imran
  */
-public class NewUser extends javax.swing.JFrame {
+public class modifyUser extends javax.swing.JFrame {
 
     /**
      * Creates new form NewUser
      */
-    public NewUser() {
+    public modifyUser() {
         initComponents();
     }
+    public String userID = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,14 +31,12 @@ public class NewUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
         btnLogin = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtNfullName = new javax.swing.JTextField();
         txtNUserP = new javax.swing.JPasswordField();
-        jLabel3 = new javax.swing.JLabel();
         txtCUserP = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
         txtNUserN = new javax.swing.JTextField();
@@ -45,12 +44,15 @@ public class NewUser extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
-        btnLogin.setText("Create");
+        btnLogin.setText("Save");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -73,9 +75,6 @@ public class NewUser extends javax.swing.JFrame {
 
         txtNUserP.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Tholoth", 1, 48)); // NOI18N
-        jLabel3.setText("New USER");
-
         txtCUserP.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
 
         jLabel4.setText("Confirm Password:");
@@ -92,38 +91,26 @@ public class NewUser extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNUserP)
-                            .addComponent(txtNfullName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCUserP)
-                            .addComponent(txtNUserN, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 31, Short.MAX_VALUE))
-                    .addComponent(jSeparator1))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNUserP)
+                    .addComponent(txtNfullName, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCUserP)
+                    .addComponent(txtNUserN, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNfullName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -143,32 +130,36 @@ public class NewUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if (txtNfullName.getText().equals("") ||txtNUserN.getText().equals("") || txtNUserP.getText().equals("") || txtCUserP.getText().equals("")) {
+        if (txtNfullName.getText().equals("") || txtNUserN.getText().equals("") || txtNUserP.getText().equals("") || txtCUserP.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "User or Password Should not be Empty");
 
         } else if (!txtNUserP.getText().equals(txtCUserP.getText())) {
-            JOptionPane.showMessageDialog(null,"Password dosn't Match");
+            JOptionPane.showMessageDialog(null, "Password dosn't Match");
 
         } else {
 
             try {
                 Class.forName("org.sqlite.JDBC");
                 try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
-                    String sql = "INSERT INTO `users`(`usern`,`upass`,'fullname') VALUES (?,?,?)";
+                    String sql = "UPDATE users SET fullname=? , usern=? ,upass=? WHERE id=?";
                     PreparedStatement st = con.prepareStatement(sql);
-                    st.setString(1, txtNUserN.getText());
-                    st.setString(2, txtNUserP.getText());
-                    st.setString(3, txtNfullName.getText());
+                    st.setString(1, txtNfullName.getText());
+                    st.setString(2, txtNUserN.getText());
+                    st.setString(3, txtNUserP.getText());
+                    st.setString(4, userID);
 
                     st.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Successfully User Created.");
+                    JOptionPane.showMessageDialog(null, "Successfully Modfied the User");
+                    con.close();
+                    this.dispose();
+                    Modify.tableG();
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
@@ -180,9 +171,9 @@ public class NewUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         //MainWin.btnNUserWin.setEnabled(true);
         //MainWin.setEnable(true);
-        MainWin.allBtnDE(true);
+        //MainWin.allBtnDE(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -191,6 +182,24 @@ public class NewUser extends javax.swing.JFrame {
         //MainWin.setEnable(true);
         MainWin.allBtnDE(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try {
+            Class.forName("org.sqlite.JDBC");
+            try (Connection con = DriverManager.getConnection("jdbc:sqlite:sample")) {
+                String sql = "SELECT * FROM users WHERE id=?";
+                PreparedStatement st = con.prepareStatement(sql);
+                st.setString(1, userID);
+                ResultSet rs = st.executeQuery();
+                txtNfullName.setText(rs.getString("fullname"));
+                txtNUserN.setText(rs.getString("usern"));
+                con.close();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -209,20 +218,21 @@ public class NewUser extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modifyUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modifyUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modifyUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modifyUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewUser().setVisible(true);
+                new modifyUser().setVisible(true);
             }
         });
     }
@@ -232,10 +242,8 @@ public class NewUser extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPasswordField txtCUserP;
     private javax.swing.JTextField txtNUserN;
     private javax.swing.JPasswordField txtNUserP;
